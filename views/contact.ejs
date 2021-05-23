@@ -3,16 +3,36 @@
 <head>
     
     <title>Contact us</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
     <link href="/styles/style.css" rel="stylesheet" type="text/css">
     
 </head>
 <body>
 
     <%- include ('partials/nav.ejs'); -%>
-    <h1>Hello Boys..!</h1>
-    <p>Department : <%=qs.dept%></p>
-    <p>Name : <%=qs.name%></p>
-    <p>Thanx for contacting us...!</p>
+
+    <div class="container col-lg-5">
+        <h2 class="text-center font-weight-bold">Contact Details</h2>
+        <hr style="width:100%;text-align:center;margin-left:0; background-color:darkred; height:3px">
+        <form id="contact_form" class="pt-3" method="POST" action="/contact">
+          <div class="form-group">
+            <label for ="Who">Who do you want to contact?</label>
+            <input type="text" class="form-control" id="who" placeholder="Enter name" name="who" value="<%= qs.person %>"required>
+          </div>
+          <div class="form-group">
+            <label for ="department">Which department?</label>
+            <input type="text" class="form-control" id="department" placeholder="Enter Department" name="department" value="<%= qs.department %>"required>
+          </div>
+          <div class="form-group">
+            <label for="email">email</label>
+            <input type="email" class="form-control" id="email" placeholder="email" name="email" required>
+          </div>
+          <button type="submit" class="btn btn-success" id="add" onclick="sendMail(email)">Confirm Payment</button>
+          <button type="reset" class="btn btn-warning" id="clear">Clear</button>
+        </for
     
 </body>
 </html>
